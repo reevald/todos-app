@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "autoreload": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Mochammad Galang Rivaldo",
@@ -14,5 +15,8 @@
     "mysql2": "^2.3.3",
     "sequelize": "^6.13.0",
     "sequelize-cli": "^6.4.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
