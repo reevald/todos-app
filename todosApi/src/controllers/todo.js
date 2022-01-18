@@ -62,7 +62,7 @@ exports.createTodo = async (req, res) => {
     label: Joi.string().min(2).max(200).required(),
     priority: Joi.string().min(3).max(200).required()
   });
-  console.log("body", req.body);
+  console.log("body nihhh", req.body);
 
   // do validation
   const { error } = schema.validate(req.body);

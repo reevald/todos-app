@@ -1,20 +1,42 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// Ref: 
+// https://reactnative.dev/docs/navigation
+// https://reactnavigation.org/docs/hello-react-navigation
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+
+import Home from "./src/screen/home";
+import CreateTodo from "./src/screen/createTodo";
+import UpdateTodo from "./src/screen/updateTodo";
+// Init QueryClient and QueryClientProvider
+import { QueryClient, QueryClientProvider } from "react-query";
+
+// Init client from queryClient
+const client = new QueryClient();
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <QueryClientProvider client={client}>
+      <NavigationContainer>
+        {/* Ref: https://reactnavigation.org/docs/stack-navigator/#screenoptions */}
+        <Stack.Navigator
+          initialRouteName="Home"
+          screenOptions={{ headerShown: false }}
+        >
+          <Stack.Screen
+            name="Home"
+            component={Home}
+          />
+          <Stack.Screen
+            name="CreateTodo"
+            component={CreateTodo}
+          />
+          <Stack.Screen
+            name="UpdateTodo"
+            component={UpdateTodo}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </QueryClientProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
